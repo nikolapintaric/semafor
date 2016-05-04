@@ -1,27 +1,29 @@
-from tkinter import*
 import time
 from form import*
+from players import*
 
 class Semafor(Toplevel):
-    def __init__(self, score_home = 0, score_guest = 0, time_decimal = 1, time_refresh = 1):
+    def __init__(self, home_name = 'HOME', guest_name = 'GUEST', score_home = 0, score_guest = 0, time_decimal = 1, time_refresh = 1):
         super().__init__()
 
-        #self.overrideredirect(1)
+        #postavke prozora
         self.resizable(0,0)
         self.title('Semafor')
-        self.geometry("240x220+200+200" )
+        self.geometry("280x280+200+200" )
         self.configure(bg="black")
 
         #kordinate za widgete
-        self.bcor = [(20,100),(20,130),(200,100),(200,130),(110,100),(110,130),(110,160)]
-        self.lcor = [(20,10),(200,10),(90,10)]
-        self.ecor = [(110,190)]
+        self.bcor = [(20,100),(20,130),(200,100),(200,130),(130,100),(130,130),(120,160)]
+        self.lcor = [(20,50),(200,50),(100,20), (20,20), (200, 20)]
+        self.ecor = [(124,190)]
         
         #globalne varijable
         self.score_home = score_home
         self.score_guest = score_guest
         self.time_decimal = time_decimal
         self.time_refresh = time_refresh  # in ms
+        self.home_name = home_name
+        self.guest_name = guest_name
 
         #lokalne varijable
         self.bool = False
@@ -43,6 +45,8 @@ class Semafor(Toplevel):
         self.l += [Label(self, text=str(self.score_home), font= ("Digital-7", 22), fg="red", bg="black")] #0
         self.l += [Label(self, text=str(self.score_guest), font= ("Digital-7", 22), fg="red", bg="black")] #1
         self.l += [Label(self, text=self.time_print.vrati(), font= ("Digital-7", 22), fg="yellow", bg="black")] #2
+        self.l += [Label(self, text=self.home_name,  font=("Digital-7", 22), fg= "white", bg="black")]  # 4
+        self.l += [Label(self, text=self.guest_name, font=("Digital-7", 22), fg= "white", bg="black")]  # 5
         for i in range(len(self.l)):
             self.l[i].place(x=self.lcor[i][0], y=self.lcor[i][1])
         
@@ -56,6 +60,10 @@ class Semafor(Toplevel):
         self.b += [Button(self, text="Set time", command=self.set)] #6
         for i in range(len(self.b)):
             self.b[i].place(x=self.bcor[i][0], y=self.bcor[i][1])
+
+        # statistika
+        self.a = Players()
+        self.a.mainloop()
 
 
     def change_score(self,x):

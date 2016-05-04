@@ -22,7 +22,7 @@ class Meni(Tk):
 
 			
     def zapocni(self):
-        s = Semafor()
+        s = Semafor( )
         s.mainloop()
     def postavke(self):
         a=1
