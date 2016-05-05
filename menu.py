@@ -1,13 +1,13 @@
 from semafor import*
 from tkinter import*
+import utils
 
 class Meni(Tk):
     def __init__(self):
         super().__init__()
-        self.resizable(0,0)
         self.title('Semafor')
         self.geometry("150x100+200+200")
-		
+
         self.b = []
 	    
         COORD = [(0, 0), (0, 25), (0, 50), (0, 75)]
@@ -22,7 +22,7 @@ class Meni(Tk):
 
 			
     def zapocni(self):
-        s = Semafor( )
+        s = Semafor(Sport(utils.make_list('players_home.txt')))
         s.mainloop()
     def postavke(self):
         a=1

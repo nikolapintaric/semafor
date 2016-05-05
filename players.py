@@ -1,4 +1,5 @@
 from tkinter import*
+import utils
 
 class Players(Toplevel):
     def __init__(self):
@@ -8,8 +9,8 @@ class Players(Toplevel):
         self.resizable(0, 0)
         self.title('Semafor')
         self.geometry("275x350+480+200")
-        self.home_names = make_list('players_home.txt')
-        self.guest_names = make_list('players_guest.txt')
+        self.home_names = utils.make_list('players_home.txt')
+        self.guest_names = utils.make_list('players_guest.txt')
 
         # list boxovi
         self.l = []
@@ -39,9 +40,3 @@ class Players(Toplevel):
             self.y += 30
 
 
-def make_list(a):
-    file = open(a, "r")
-    z = file.read()
-    l = z.split("\n")
-    file.close()
-    return(l)
