@@ -23,7 +23,7 @@ class Meni(Tk):
 			
     def zapocni(self):
         s = Semafor(Sport(utils.make_list('players_home.txt')))
-        s.mainloop()
+
     def postavke(self):
         a=1
     def informacije(self):

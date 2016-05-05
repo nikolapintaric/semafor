@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import ttk
 
 class Sport():
 
@@ -11,12 +12,12 @@ class Sport():
 
     def generateDisplay(self):
         frame = Tk()
-        frame.config(bg='Black')
 
-        Label(frame, name='homename', text=self.home_name).pack()
-        Label(frame, name='time', text='00:00').pack()
+        Label(frame, name='homename', text=self.home_name, bg='black', fg='white', font= 'digital-7').grid(row=0,column= 0, sticky=N+S+E+W)
+        Label(frame, name='time', text='00:00', bg='black', fg='yellow', font= 'digital-7').grid(row=0, column=1, sticky=N+S+E+W),
+        Label(frame, name='guestname', text=self.guest_name, bg='black', fg='white', font= 'digital-7').grid(row=0, column=2,sticky=N+S+E+W)
 
-        return "lasdjkfg;lkjasdf"
+        return frame
 
 
 class Player():
