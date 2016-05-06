@@ -14,7 +14,6 @@ class Semafor():
         self = Display
 
         self.title('Semafor')
-        self.geometry("450x240+300+300")
         self.configure(bg="black")
 
         self.mainloop()
