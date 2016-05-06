@@ -13,9 +13,7 @@ class Semafor():
         Display = sport.generateDisplay()
         self = Display
 
-        self.resizable(1,1)
         self.title('Semafor')
-        self.geometry("280x280+200+200" )
         self.configure(bg="black")
 
         self.mainloop()

@@ -11,13 +11,30 @@ class Sport():
         self.score_guest=0
 
     def generateDisplay(self):
-        frame = Tk()
+        root = Tk()
 
-        Label(frame, name='homename', text=self.home_name, bg='black', fg='white', font= 'digital-7').grid(row=0,column= 0, sticky=N+S+E+W)
-        Label(frame, name='time', text='00:00', bg='black', fg='yellow', font= 'digital-7').grid(row=0, column=1, sticky=N+S+E+W),
-        Label(frame, name='guestname', text=self.guest_name, bg='black', fg='white', font= 'digital-7').grid(row=0, column=2,sticky=N+S+E+W)
+        self.labelfont = ('digital-7', 35 )
 
-        return frame
+        lhome = ttk.Label(root, name='homename', text=self.home_name, background='black', foreground='white', font=self.labelfont)
+        ltime = ttk.Label(root, name='time', text='00:00', background='black', foreground='yellow', font=self.labelfont)
+        lguest = ttk.Label(root, name='guestname', text=self.guest_name,  background='black', foreground='white', font=self.labelfont)
+        lscoreh = ttk.Label(root, name='score_home', text=str(self.score_home),  background='black', foreground='red', font=self.labelfont )
+        lscoreg = ttk.Label(root, name='score_guest', text=str(self.score_guest), background='black', foreground='red',font=self.labelfont)
+
+        lhome.grid(column=0, row=0, padx=3,pady=3)
+        ltime.grid(column=1, row=0, padx=3,pady=3)
+        lguest.grid(column=2, row=0, padx=3,pady=3)
+        lscoreh.grid(column=0, row=1, padx=3, pady=3)
+        lscoreg.grid(column=2, row=1, padx=3,pady=3)
+
+        root.columnconfigure(0, weight=1)
+        root.columnconfigure(1, weight=1)
+        root.columnconfigure(2, weight=1)
+        root.rowconfigure(0, weight=1)
+        root.rowconfigure(1, weight=1)
+        root.rowconfigure(2, weight=1)
+
+        return root
 
 
 class Player():
